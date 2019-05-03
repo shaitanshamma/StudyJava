@@ -12,12 +12,16 @@ public class MyArrayDataException extends Exception {
 class MyArrayData {
 
     public static int rezult;
+    public static int c;
+    public static int b;
 
     public int ch(String[][] ms) throws MyArrayDataException {
         for (int i = 0; i < ms.length; i++) {
             for (int j = 0; j < ms.length; j++) {
                 try {
                     rezult += Integer.parseInt(ms[i][j]);
+                    c = i;
+                    b = j+1;
                 } catch (NumberFormatException e) {
                     throw new MyArrayDataException("Ошибка данных массива ", i, j);
                 }
