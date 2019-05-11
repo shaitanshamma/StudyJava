@@ -51,11 +51,11 @@ public class Password {
         String pass2 = "!sds#d33g1121111";
         checkPass(pass1);
         checkPass(pass2);
-//        Pattern pattern;
-//        pattern = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9@#$%]).{8,20}");
-//        Matcher matcher = pattern.matcher(pass2);
-//        if (matcher.find()) {
-//            System.out.println("Пароль подходит!");
-//        } else System.out.println("Пароль не валиден!");
+        Pattern pattern;
+        pattern = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9@#$%]).{8,20}");
+        Matcher matcher = pattern.matcher(pass1);
+        if (matcher.find()) {
+            System.out.println("Пароль подходит!");
+        } else System.out.println("Пароль не валиден!");
     }
 }
