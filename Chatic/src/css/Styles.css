@@ -1,5 +1,5 @@
 #btn1:focused {
-    -fx-background-color: red;
+    -fx-background-color: #104491;
 
 }
 
@@ -9,12 +9,12 @@
 
 #btn1 {
     -fx-background-color: linear-gradient(to bottom right, #104491, #1f97c1);
-    -fx-font: bold italic 17px "Arial";
+    -fx-font: bold italic 16px "Arial";
 }
 
 #textField {
     -fx-font: bold italic 14px "Helvetica";
-    /*-fx-background-color:linear-gradient(to bottom left, #889aae, #fbfdff) ;*/
+    -fx-background-color:linear-gradient(to bottom left, #889aae, #fbfdff) ;
 
     -fx-border-color: #6c737a;
     -fx-border-width: 1px;
