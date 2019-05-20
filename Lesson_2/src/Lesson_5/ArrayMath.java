@@ -38,7 +38,7 @@ public class ArrayMath {
                 }
             }
         });
-        thread1.start();
+
         Thread thread2 = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -47,13 +47,14 @@ public class ArrayMath {
                 }
             }
         });
+        thread1.start();
         thread2.start();
-        try {
-            thread1.join();
-            thread2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            thread1.join();
+//            thread2.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         System.arraycopy(arr2, 0, arr1, 0, half);
         System.arraycopy(arr3, 0, arr1, half, half);
 
