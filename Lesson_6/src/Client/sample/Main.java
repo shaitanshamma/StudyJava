@@ -17,6 +17,9 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.getIcons().add(new Image("file:resources/images/chat.png"));
         primaryStage.show();
+        primaryStage.setOnCloseRequest(event -> {
+            System.exit(0);
+        });
 
     }
 
