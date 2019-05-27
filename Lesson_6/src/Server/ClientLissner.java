@@ -1,15 +1,22 @@
 package Server;
 
+import Client.sample.Controller;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+
+import static Client.sample.Controller.isAuthorized;
 
 public class ClientLissner {
     DataOutputStream outputStream;
     DataInputStream inputStream;
     Socket socket;
     ChatServer chatServer;
+    String nick;
+    String wispNick;
+
 
     public ClientLissner(Socket socket, ChatServer chatServer) {
         try {
@@ -22,14 +29,58 @@ public class ClientLissner {
                 @Override
                 public void run() {
                     try {
+                        // цикл для авторизации
                         while (true) {
                             String str = inputStream.readUTF();
-                            if (str.equals("/end")) {
+                            // если сообщение начинается с /auth
+                            if(str.startsWith("/auth")) {
+                                String[] tokens = str.split(" ");
+                                // Вытаскиваем данные из БД
+                                String newNick = Authentification.getNickByLoginAndPass(tokens[1], tokens[2]);
+                                if (newNick != null && !chatServer.isIn(newNick)) {
+                                    // отправляем сообщение об успешной авторизации
+                                    sendMsg("/authok");
+                                    nick = newNick;
+                                    chatServer.subscribe(ClientLissner.this);
+                                    break;
+                                } else {
+                                    sendMsg("Уже есть такой");
+
+                                    //sendMsg("Неверный логин/пароль!");
+                                }
+                            }
+                        }
+
+                        // блок для отправки сообщений
+                        while (true) {
+                            String str = inputStream.readUTF();
+                            if(str.equals("/end")) {
+                                outputStream.writeUTF("/serverClosed");
                                 break;
                             }
-                            chatServer.broadcastMsg("Client: " + str);
+                            chatServer.broadcastMsg(nick + " : " + str);
+
                         }
-                    } catch (IOException e) {
+                        while(true){
+                            String wisp= inputStream.readUTF();
+                            if(wisp.startsWith("/w")) {
+                                String[] tokens = wisp.split(" ",2);
+                                // Вытаскиваем данные из БД
+                                String newNick = Authentification.getNickByLoginAndPass(tokens[1], tokens[2]);
+                                String msg = tokens[2];
+                                wispNick = tokens[1];
+                                System.out.println(wispNick);
+                                if (wispNick != null) {
+                                    // отправляем сообщение об успешной авторизации
+                                    chatServer.sendWisper(msg, newNick);
+
+                                } else {
+                                    sendMsg("Нет такого пользователя");
+                                }
+                            }
+                            //chatServer.sendWisper(str);
+                        }
+                    }  catch (IOException e) {
                         e.printStackTrace();
                     } finally {
                         try {
@@ -44,10 +95,10 @@ public class ClientLissner {
                         }
                         try {
                             socket.close();
-                            System.out.println("off");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                        chatServer.unsubscribe(ClientLissner.this);
                     }
                 }
             }).start();
@@ -64,4 +115,5 @@ public class ClientLissner {
             e.printStackTrace();
         }
     }
+
 }
