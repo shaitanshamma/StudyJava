@@ -18,8 +18,6 @@ public class ChatServer {
         try {
             Authentification.connect();
 
-            // System.out.println(AuthService.getNickByLoginAndPass("login12", "pass1"));
-
             server = new ServerSocket(8189);
             System.out.println("Сервер запущен");
 

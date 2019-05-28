@@ -1,13 +1,10 @@
 package Server;
 
-import Client.sample.Controller;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import static Client.sample.Controller.isAuthorized;
 
 public class ClientLissner {
     DataOutputStream outputStream;
@@ -33,7 +30,7 @@ public class ClientLissner {
                         while (true) {
                             String str = inputStream.readUTF();
                             // если сообщение начинается с /auth
-                            if(str.startsWith("/auth")) {
+                            if (str.startsWith("/auth")) {
                                 String[] tokens = str.split(" ");
                                 // Вытаскиваем данные из БД
                                 String newNick = Authentification.getNickByLoginAndPass(tokens[1], tokens[2]);
@@ -44,43 +41,32 @@ public class ClientLissner {
                                     chatServer.subscribe(ClientLissner.this);
                                     break;
                                 } else {
-                                    sendMsg("Уже есть такой");
-
-                                    //sendMsg("Неверный логин/пароль!");
+                                    sendMsg("Неверный логин/пароль!");
                                 }
                             }
                         }
 
-                        // блок для отправки сообщений
                         while (true) {
                             String str = inputStream.readUTF();
-                            if(str.equals("/end")) {
+                            if (str.equals("/end")) {
                                 outputStream.writeUTF("/serverClosed");
                                 break;
-                            }
-                            chatServer.broadcastMsg(nick + " : " + str);
-
-                        }
-                        while(true){
-                            String wisp= inputStream.readUTF();
-                            if(wisp.startsWith("/w")) {
-                                String[] tokens = wisp.split(" ",2);
-                                // Вытаскиваем данные из БД
-                                String newNick = Authentification.getNickByLoginAndPass(tokens[1], tokens[2]);
-                                String msg = tokens[2];
-                                wispNick = tokens[1];
+                            } else if (str.startsWith("/w")) {
+                                String[] tokens = str.split(" ", 3);
+                                String wisp = tokens[1];
+                                String msg = nick + ": " + tokens[2];
+                                wispNick = wisp;
                                 System.out.println(wispNick);
                                 if (wispNick != null) {
-                                    // отправляем сообщение об успешной авторизации
-                                    chatServer.sendWisper(msg, newNick);
+                                    chatServer.sendWisper(msg, wispNick);
 
                                 } else {
                                     sendMsg("Нет такого пользователя");
                                 }
-                            }
-                            //chatServer.sendWisper(str);
+                            } else chatServer.broadcastMsg(nick + " : " + str);
+
                         }
-                    }  catch (IOException e) {
+                    } catch (IOException e) {
                         e.printStackTrace();
                     } finally {
                         try {
@@ -115,5 +101,4 @@ public class ClientLissner {
             e.printStackTrace();
         }
     }
-
 }
