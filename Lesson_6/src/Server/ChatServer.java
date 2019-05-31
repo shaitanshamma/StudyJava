@@ -10,6 +10,7 @@ import java.util.Vector;
 public class ChatServer {
     private Vector<ClientLissner> clients;
 
+
     public ChatServer() throws SQLException {
         ServerSocket server = null;
         Socket socket = null;
@@ -54,16 +55,22 @@ public class ChatServer {
         clients.remove(client);
     }
 
-    public void broadcastMsg(String msg) {
-        for (ClientLissner o : clients) {
-            o.sendMsg(msg);
+
+    public void broadcastMsg(ClientLissner nick,String msg) {
+        for (ClientLissner o: clients) {
+            if(!o.checkBlackList(nick.getNick())) {
+                o.sendMsg(msg);
+            }
         }
     }
 
-    public void sendWisper(String msg, String wispNick) {
+    public void sendWisper(String msg, String wispNick ,ClientLissner whoSend) {
         for (ClientLissner o : clients) {
-            if (o.nick.equals(wispNick)) {
+            if (o.getNick().equals(wispNick) && !o.checkBlackList(whoSend.getNick())) {
                 o.sendMsg(msg);
+                whoSend.sendMsg("to " + wispNick + ": " + msg);
+            }else if (o.getNick().equals(wispNick) && o.checkBlackList(whoSend.getNick())) {
+                whoSend.sendMsg("Вы в черном списке у " + o.getNick());
             }
         }
     }

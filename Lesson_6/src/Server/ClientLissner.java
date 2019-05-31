@@ -1,9 +1,12 @@
 package Server;
 
+import Client.sample.Controller;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
 
 
 public class ClientLissner {
@@ -13,19 +16,26 @@ public class ClientLissner {
     ChatServer chatServer;
     String nick;
     String wispNick;
-
+    int timeOutMilliSec = 5000;
+    ArrayList<String> blackList;
+    public String getNick() {
+        return nick;
+    }
 
     public ClientLissner(Socket socket, ChatServer chatServer) {
+
         try {
             this.socket = socket;
             this.chatServer = chatServer;
             inputStream = new DataInputStream(socket.getInputStream());
             outputStream = new DataOutputStream(socket.getOutputStream());
+            this.blackList = new ArrayList<>();
 
-            new Thread(new Runnable() {
+            Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
+
                         // цикл для авторизации
                         while (true) {
                             String str = inputStream.readUTF();
@@ -54,16 +64,21 @@ public class ClientLissner {
                             } else if (str.startsWith("/w")) {
                                 String[] tokens = str.split(" ", 3);
                                 String wisp = tokens[1];
-                                String msg = nick + ": " + tokens[2];
+                                String msg = nick + " : " + tokens[2];
                                 wispNick = wisp;
                                 System.out.println(wispNick);
                                 if (wispNick != null) {
-                                    chatServer.sendWisper(msg, wispNick);
+                                    chatServer.sendWisper(msg, wispNick,ClientLissner.this);
 
                                 } else {
                                     sendMsg("Нет такого пользователя");
                                 }
-                            } else chatServer.broadcastMsg(nick + " : " + str);
+                            } else if(str.startsWith("/blacklist ")) {
+                                    String[] tokens = str.split(" ");
+                                    blackList.add(tokens[1]);
+                                    sendMsg("Вы добавили пользователя " + tokens[1] + " в черный список");
+                            }
+                            else chatServer.broadcastMsg(ClientLissner.this,nick + " : " + str);
 
                         }
                     } catch (IOException e) {
@@ -87,8 +102,12 @@ public class ClientLissner {
                         chatServer.unsubscribe(ClientLissner.this);
                     }
                 }
-            }).start();
+            });t.start();
+            if (outputStream == null){
+            }else {
+                socket.setSoTimeout(timeOutMilliSec);
 
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -101,4 +120,9 @@ public class ClientLissner {
             e.printStackTrace();
         }
     }
+    public boolean checkBlackList(String nick) {
+        return blackList.contains(nick);
+    }
+
+
 }
