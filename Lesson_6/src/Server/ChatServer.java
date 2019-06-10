@@ -1,5 +1,6 @@
 package Server;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -9,7 +10,8 @@ import java.util.Vector;
 
 public class ChatServer {
     private Vector<ClientLissner> clients;
-
+    DataOutputStream outputStream;
+    static Vector<String> lis = new Vector<>();
 
     public ChatServer() throws SQLException {
         ServerSocket server = null;
@@ -20,6 +22,7 @@ public class ChatServer {
             Authentification.connect();
 
             server = new ServerSocket(8189);
+            System.out.println(lis);
             System.out.println("Сервер запущен");
 
             while (true) {
@@ -48,6 +51,9 @@ public class ChatServer {
     // подписываем клиента на рассылку
     public void subscribe(ClientLissner client) {
         clients.add(client);
+        Authentification.getHistory();
+        System.out.println(lis);
+       // lis.clear();
     }
 
     // отписываем клиента от рассылки сообщений
@@ -56,20 +62,20 @@ public class ChatServer {
     }
 
 
-    public void broadcastMsg(ClientLissner nick,String msg) {
-        for (ClientLissner o: clients) {
-            if(!o.checkBlackList(nick.getNick())) {
+    public void broadcastMsg(ClientLissner nick, String msg) {
+        for (ClientLissner o : clients) {
+            if (!o.checkBlackList(nick.getNick())) {
                 o.sendMsg(msg);
             }
         }
     }
 
-    public void sendWisper(String msg, String wispNick ,ClientLissner whoSend) {
+    public void sendWisper(String msg, String wispNick, ClientLissner whoSend) {
         for (ClientLissner o : clients) {
             if (o.getNick().equals(wispNick) && !o.checkBlackList(whoSend.getNick())) {
                 o.sendMsg(msg);
                 whoSend.sendMsg("to " + wispNick + ": " + msg);
-            }else if (o.getNick().equals(wispNick) && o.checkBlackList(whoSend.getNick())) {
+            } else if (o.getNick().equals(wispNick) && o.checkBlackList(whoSend.getNick())) {
                 whoSend.sendMsg("Вы в черном списке у " + o.getNick());
             }
         }
@@ -83,4 +89,15 @@ public class ChatServer {
         }
         return false;
     }
+
+    public void sendHistoryToClient(String msg) {
+        try {
+            outputStream.writeUTF(msg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
+
+

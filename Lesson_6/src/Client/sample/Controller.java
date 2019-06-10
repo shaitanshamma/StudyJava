@@ -1,5 +1,6 @@
 package Client.sample;
 
+import Server.Authentification;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -90,7 +91,9 @@ public class Controller {
                             if (str.equals("/serverClosed")) {
                                 break;
                             }
+
                             textArea.appendText(str + "\n");
+
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
