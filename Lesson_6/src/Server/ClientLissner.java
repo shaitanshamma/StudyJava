@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import static Server.Authentification.iterator;
+import static Server.Authentification.list;
+import static Server.ChatServer.lis;
+
 
 public class ClientLissner {
     DataOutputStream outputStream;
@@ -16,7 +20,7 @@ public class ClientLissner {
     ChatServer chatServer;
     String nick;
     String wispNick;
-    int timeOutMilliSec = 5000;
+    int timeOutMilliSec = 50000;
     ArrayList<String> blackList;
     public String getNick() {
         return nick;
@@ -48,8 +52,19 @@ public class ClientLissner {
                                     // отправляем сообщение об успешной авторизации
                                     sendMsg("/authok");
                                     nick = newNick;
+                                    //Authentification.getHistory();
                                     chatServer.subscribe(ClientLissner.this);
+                                    for (int i = 0; i <lis.size() ; i++) {
+                                        if(lis.get(i)!=null){
+                                            sendMsg(lis.get(i));
+
+                                        }else chatServer.broadcastMsg(ClientLissner.this, "чисто");
+                                    }
+
+                                      //  chatServer.broadcastMsg(ClientLissner.this,Authentification.checkHistory());
+
                                     break;
+
                                 } else {
                                     sendMsg("Неверный логин/пароль!");
                                 }
@@ -78,7 +93,12 @@ public class ClientLissner {
                                     blackList.add(tokens[1]);
                                     sendMsg("Вы добавили пользователя " + tokens[1] + " в черный список");
                             }
-                            else chatServer.broadcastMsg(ClientLissner.this,nick + " : " + str);
+                            else {
+                                chatServer.broadcastMsg(ClientLissner.this,nick + " : " + str);
+                                Authentification.saveHistory(nick, str);
+
+
+                            }
 
                         }
                     } catch (IOException e) {
