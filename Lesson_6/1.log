@@ -1,0 +1,59 @@
+июн. 24, 2019 10:42:44 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 10:47:12 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 10:47:16 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 10:49:13 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 10:49:22 ПП Server.ChatServer <init>
+INFO: Клиент подключился
+июн. 24, 2019 10:49:42 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 10:49:50 ПП Server.ChatServer <init>
+INFO: Клиент подключился
+июн. 24, 2019 11:05:57 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 11:06:06 ПП Server.ChatServer <init>
+INFO: Клиент подключился
+июн. 24, 2019 11:12:56 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 11:13:02 ПП Server.ChatServer <init>
+INFO: Клиент подключился
+июн. 24, 2019 11:13:12 ПП Server.ChatServer <init>
+INFO: Клиент подключился
+июн. 24, 2019 11:19:51 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 11:19:58 ПП Server.ClientLissner <init>
+INFO: timeout
+июн. 24, 2019 11:19:58 ПП Server.ChatServer <init>INFO: Клиент подключился
+июн. 24, 2019 11:19:58 ПП Server.ClientLissner$1 run
+INFO: подключился 
+июн. 24, 2019 11:24:44 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 11:24:52 ПП Server.ClientLissner <init>
+INFO: timeout
+июн. 24, 2019 11:24:52 ПП Server.ChatServer <init>
+INFO: Клиент подключился
+июн. 24, 2019 11:24:52 ПП Server.ClientLissner$1 run
+INFO: подключился 
+июн. 24, 2019 11:27:00 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 11:27:09 ПП Server.ClientLissner <init>
+INFO: timeout
+июн. 24, 2019 11:27:09 ПП Server.ChatServer <init>
+INFO: Клиент подключился
+июн. 24, 2019 11:27:09 ПП Server.ClientLissner$1 run
+INFO: подключился 
+июн. 24, 2019 11:29:02 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 24, 2019 11:29:08 ПП Server.ChatServer <init>
+INFO: Клиент подключился
+июн. 24, 2019 11:29:08 ПП Server.ClientLissner$1 run
+INFO: подключился 
+июн. 25, 2019 6:49:52 ПП Server.ChatServer <init>
+INFO: Сервер запущен
+июн. 25, 2019 6:50:08 ПП Server.ChatServer <init>
+INFO: Клиент подключился
+июн. 25, 2019 6:50:09 ПП Server.ClientLissner$1 run
+INFO: подключился 
