@@ -1,6 +1,7 @@
 package Client.sample;
 
 import Server.Authentification;
+import Server.ChatServer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,8 +16,23 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.*;
 
 public class Controller {
+    private static final Logger log = Logger.getLogger("");
+    static Handler handler;
+
+    static {
+        try {
+            handler = new FileHandler("1.log", true);
+            handler.setLevel(Level.ALL);
+            handler.setFormatter(new SimpleFormatter());
+            log.addHandler(handler);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     TextArea textArea;
 
@@ -45,7 +61,7 @@ public class Controller {
     public static boolean isAuthorized;
 
     final String IP_ADRESS = "localhost";
-    final int PORT = 8189;
+    final int PORT = 8989;
 
     // метод для показа нижней панели или верхней
     public void setAuthorized(boolean isAuthorized) {
@@ -135,6 +151,8 @@ public class Controller {
             out.writeUTF(textField.getText());
             textField.clear();
             textField.requestFocus();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,0 +1,24 @@
+2019-06-25 19:45:29 INFO  ChatServer:46 - Сервер запущен
+2019-06-25 19:45:36 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 19:45:36 INFO  ChatServer:61 - подключился nick1
+2019-06-25 19:45:39 INFO  ChatServer:82 - dissconnect
+2019-06-25 19:45:42 INFO  ChatServer:128 - отключение nick1
+2019-06-25 20:31:50 INFO  ChatServer:46 - Сервер запущен
+2019-06-25 20:31:59 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 20:31:59 INFO  ChatServer:61 - подключился nick1
+2019-06-25 20:32:49 INFO  ChatServer:128 - отключение nick1
+2019-06-25 20:34:48 INFO  ChatServer:46 - Сервер запущен
+2019-06-25 20:34:56 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 20:34:56 INFO  ChatServer:61 - подключился nick1
+2019-06-25 20:35:06 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 20:35:06 INFO  ChatServer:61 - подключился nick2
+2019-06-25 20:35:09 INFO  ChatServer:128 - отключение nick2
+2019-06-25 20:35:16 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 20:35:16 INFO  ChatServer:61 - подключился nick2
+2019-06-25 20:35:24 INFO  ChatServer:128 - отключение nick2
+2019-06-25 20:35:31 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 20:35:31 INFO  ChatServer:61 - подключился nick3
+2019-06-25 20:35:40 ERROR ChatServer:82 - dissconnect
+2019-06-25 20:35:40 INFO  ChatServer:94 - wisper
+2019-06-25 20:35:46 INFO  ChatServer:128 - отключение nick1
+2019-06-25 20:36:03 INFO  ChatServer:128 - отключение nick3

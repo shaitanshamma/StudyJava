@@ -1,0 +1,100 @@
+2019-06-25 19:33:51 INFO  ChatServer:46 - Сервер запущен
+2019-06-25 19:34:18 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 19:34:18 INFO  ChatServer:145 - /authok
+2019-06-25 19:34:18 INFO  ChatServer:60 - подключился 
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 232
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 1111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : 333
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : тест
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : прошел
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 222
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : еще тест
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : принял
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : 222
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 2222
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : 222
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick3 : 111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 222
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : тест
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : принял
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : 111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 222
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : 333
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 444
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick3 : 1
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : 2
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 222
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 22
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 1111111111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick3 : 112
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 222
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : 111
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 2
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 4
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 1
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick2 : 1
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 2
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 1
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 2
+2019-06-25 19:34:18 INFO  ChatServer:145 - nick1 : 3
+2019-06-25 19:37:44 INFO  ChatServer:46 - Сервер запущен
+2019-06-25 19:37:50 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 19:37:50 INFO  ChatServer:145 - /authok
+2019-06-25 19:37:50 INFO  ChatServer:60 - подключился nick1
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 232
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 1111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : 333
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : тест
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : прошел
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 222
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : еще тест
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : принял
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : 222
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 2222
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : 222
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick3 : 111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 222
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : тест
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : принял
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : 111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 222
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : 333
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 444
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick3 : 1
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : 2
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 222
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 22
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 1111111111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick3 : 112
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 222
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : 111
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 2
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 4
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 1
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick2 : 1
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 2
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 1
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 2
+2019-06-25 19:37:50 INFO  ChatServer:145 - nick1 : 3
+2019-06-25 19:41:37 INFO  ChatServer:46 - Сервер запущен
+2019-06-25 19:41:43 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 19:41:43 INFO  ChatServer:60 - подключился nick1
+2019-06-25 19:41:56 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 19:41:56 INFO  ChatServer:60 - подключился nick2
+2019-06-25 19:41:58 INFO  ChatServer:127 - отключение nick2
+2019-06-25 19:42:16 INFO  ChatServer:52 - Клиент подключился
+2019-06-25 19:42:16 INFO  ChatServer:60 - подключился nick3
+2019-06-25 19:42:19 INFO  ChatServer:127 - отключение nick3
+2019-06-25 19:42:33 INFO  ChatServer:127 - отключение nick1

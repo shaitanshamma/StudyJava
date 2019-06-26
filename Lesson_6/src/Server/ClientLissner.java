@@ -7,6 +7,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.*;
 
 import static Server.Authentification.iterator;
 import static Server.Authentification.list;
@@ -14,6 +15,7 @@ import static Server.ChatServer.lis;
 
 
 public class ClientLissner {
+
     DataOutputStream outputStream;
     DataInputStream inputStream;
     Socket socket;
@@ -22,11 +24,13 @@ public class ClientLissner {
     String wispNick;
     int timeOutMilliSec = 50000;
     ArrayList<String> blackList;
+
     public String getNick() {
         return nick;
     }
 
     public ClientLissner(Socket socket, ChatServer chatServer) {
+
 
         try {
             this.socket = socket;
@@ -54,25 +58,28 @@ public class ClientLissner {
                                     nick = newNick;
                                     //Authentification.getHistory();
                                     chatServer.subscribe(ClientLissner.this);
-                                    for (int i = 0; i <lis.size() ; i++) {
-                                        if(lis.get(i)!=null){
+                                    ChatServer.log.info("подключился " + ClientLissner.this.nick);
+                                    for (int i = 0; i < lis.size(); i++) {
+                                        if (lis.get(i) != null) {
                                             sendMsg(lis.get(i));
 
-                                        }else chatServer.broadcastMsg(ClientLissner.this, "чисто");
+                                        } else chatServer.broadcastMsg(ClientLissner.this, "чисто");
                                     }
 
-                                      //  chatServer.broadcastMsg(ClientLissner.this,Authentification.checkHistory());
+                                    //  chatServer.broadcastMsg(ClientLissner.this,Authentification.checkHistory());
 
                                     break;
 
                                 } else {
                                     sendMsg("Неверный логин/пароль!");
+                                    ChatServer.log.info("Неверный логин/пароль! " + ClientLissner.this.nick);
                                 }
                             }
                         }
 
                         while (true) {
                             String str = inputStream.readUTF();
+                            ChatServer.log.error("dissconnect");
                             if (str.equals("/end")) {
                                 outputStream.writeUTF("/serverClosed");
                                 break;
@@ -83,20 +90,18 @@ public class ClientLissner {
                                 wispNick = wisp;
                                 System.out.println(wispNick);
                                 if (wispNick != null) {
-                                    chatServer.sendWisper(msg, wispNick,ClientLissner.this);
-
+                                    chatServer.sendWisper(msg, wispNick, ClientLissner.this);
+                                    ChatServer.log.info("wisper");
                                 } else {
                                     sendMsg("Нет такого пользователя");
                                 }
-                            } else if(str.startsWith("/blacklist ")) {
-                                    String[] tokens = str.split(" ");
-                                    blackList.add(tokens[1]);
-                                    sendMsg("Вы добавили пользователя " + tokens[1] + " в черный список");
-                            }
-                            else {
-                                chatServer.broadcastMsg(ClientLissner.this,nick + " : " + str);
+                            } else if (str.startsWith("/blacklist ")) {
+                                String[] tokens = str.split(" ");
+                                blackList.add(tokens[1]);
+                                sendMsg("Вы добавили пользователя " + tokens[1] + " в черный список");
+                            } else {
+                                chatServer.broadcastMsg(ClientLissner.this, nick + " : " + str);
                                 Authentification.saveHistory(nick, str);
-
 
                             }
 
@@ -120,12 +125,16 @@ public class ClientLissner {
                             e.printStackTrace();
                         }
                         chatServer.unsubscribe(ClientLissner.this);
+                        ChatServer.log.info("отключение " + ClientLissner.this.nick);
                     }
                 }
-            });t.start();
-            if (outputStream == null){
-            }else {
+            });
+            t.start();
+            if (outputStream == null) {
+                ChatServer.log.info("timeout");
+            } else {
                 socket.setSoTimeout(timeOutMilliSec);
+
 
             }
         } catch (IOException e) {
@@ -140,6 +149,7 @@ public class ClientLissner {
             e.printStackTrace();
         }
     }
+
     public boolean checkBlackList(String nick) {
         return blackList.contains(nick);
     }
